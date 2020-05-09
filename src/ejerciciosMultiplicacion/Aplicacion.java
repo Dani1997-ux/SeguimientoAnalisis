@@ -25,6 +25,130 @@ public class Aplicacion {
 
 	public static void main(String[] args) {
 
+		int i = 0;
+		int[][] A = new int[32][32];
+		int[][] B = new int[32][32];
+		// Creacion del arreglo para las pruebas de algunos metodos de
+		// multiplicacion
+		int[] array = new int[1000];
+		int[] array2 = new int[2000];
+
+		int[] resultado = new int[array.length + array2.length];
+
+		// Creaccion de los arraylist para las pruebas de americana e ingles
+		// iterativos
+		ArrayList<Integer> multiplicador1 = new ArrayList<>();
+		ArrayList<Integer> multiplicador2 = new ArrayList<>();
+	
+
+		// Creacion de valores para la ejecucion de algunas pruebas
+		int operando1 = 100000;
+		int operando2 = 80000;
+
+		recorrerArreglo(array, array2, i);
+		recorrerMatriz(A, B);
+		recorrerArraylist(multiplicador1, multiplicador2);
+
+		/* (1) Multiplicaci√≥n Inglesa ‚Äì ArrayList */
+		long startTimeInglesaArraylist = System.nanoTime();
+
+		MinglesaArraylist.calcularMultiplicacionInglesa(multiplicador1, multiplicador2);
+		long endTimeInglesaArrayList = System.nanoTime() - startTimeInglesaArraylist;
+		System.out
+				.println("1. Tiempo de Ejecucion Multiplicacion Inglesa Arraylist: " + endTimeInglesaArrayList + " ns");
+
+		/* (2) Multiplicaci√≥n a la americana ‚Äì ArrayList */
+		long startTimeAmericanaArraylist = System.nanoTime();
+
+		MamericanaArraylist.calcularAmericano(array, array2);
+		long endTimeAmericanaArraylist = System.nanoTime() - startTimeAmericanaArraylist;
+		System.out.println(
+				"2. Tiempo de Ejecucion Multiplicacion Americana ArrayList: " + endTimeAmericanaArraylist + " ns");
+
+		/* (3) Multiplicaci√≥n inglesa recursiva ‚Äì Arreglos */
+		long startTimeInglesaRecursiva = System.nanoTime();
+
+		MinglesaRecursiva.MultiplicacionInglesa(i, array, array2);
+		long endTimeInglesaRecursiva = System.nanoTime() - startTimeInglesaRecursiva;
+		System.out
+				.println("3. Tiempo de Ejecucion Multiplicacion Inglesa Recursiva: " + endTimeInglesaRecursiva + " ns");
+
+		/* (4) Multiplicaci√≥n a la americana recursivo ‚Äì Arreglos */
+		long startTimeAmericanaRecursivo = System.nanoTime();
+
+		MamericanaRecursivo.calcularAmericano(array, array2, resultado, 0, 0);
+		long endTimeAmericanaRecursivo = System.nanoTime() - startTimeAmericanaRecursivo;
+		System.out.println(
+				"4. Tiempo de Ejecucion Multiplicacion Americana recursivo: " + endTimeAmericanaRecursivo + " ns");
+
+		/* (5) Multiplicaci√≥n a la rusa iterativa ‚Äì Arreglos */
+		long startTimeRusaIterativa = System.nanoTime();
+
+		MrusaIterativa.multiplicarRusaIterativa(array, array2);
+		long endTimeRusaIterativa = System.nanoTime() - startTimeRusaIterativa;
+		System.out.println("5. Tiempo de Ejecucion Multiplicacion Rusa Iterativa: " + endTimeRusaIterativa + " ns");
+
+		/* (6) Multiplicaci√≥n a la rusa recursiva‚Äì Arreglos */
+		long startTimeRusaIRecursiva = System.nanoTime();
+
+		SeisMultiplicacionRusaRecursiva.multiplicarRusaRecursivo(operando1, operando2);
+		long endTimeRusaRecursiva = System.nanoTime() - startTimeRusaIRecursiva;
+		System.out.println("6. Tiempo de Ejecucion Multiplicacion Rusa Recursiva: " + endTimeRusaRecursiva + " ns");
+
+		/* (7) Multiplicaci√≥n hindu */
+		long startTimeHindu = System.nanoTime();
+
+		MHindu.calcularHindu(operando1, operando2);
+		long endTimeHindu = System.nanoTime() - startTimeHindu;
+		System.out.println("7. Tiempo de Ejecucion Multiplicacion Hindu: " + endTimeHindu + " ns");
+
+		/* (8) Multiplicaci√≥n Egipcia */
+		long startTimeEgipcio = System.nanoTime();
+
+		MEgipcia.calcularMultiplicacionEgipcia(operando1, operando2);
+		long endTimeEgipcio = System.nanoTime() - startTimeEgipcio;
+		System.out.println("8. Tiempo de Ejecucion Multiplicacion Egipcia: " + endTimeEgipcio + " ns");
+
+		/* (9) Multiplicaci√≥n de base 100 */
+		long startTimeBase100 = System.nanoTime();
+
+		Mbase100.calcularMetodoBase100(operando1, operando2);
+		long endTimeBase100 = System.nanoTime() - startTimeBase100;
+		System.out.println("9. Tiempo de Ejecucion Multiplicacion  Base 100: " + endTimeBase100 + " ns");
+
+		/* (10) Multiplicaci√≥n divide y venceras 1 */
+		long startTimeDivideYVenceras1 = System.nanoTime();
+
+		MdivideVenceras1.multiplicarArregloDyV(0, array.length - 1, array2);
+		long endTimeDivideYVenceras1 = System.nanoTime() - startTimeDivideYVenceras1;
+		System.out.println(
+				"10.Tiempo de Ejecucion Multiplicacion Divide y venceras 1 " + endTimeDivideYVenceras1 + " ns");
+
+		/* (11) Multiplicaci√≥n divide y venceras 2 */
+		long startTimeDivideYVenceras2 = System.nanoTime();
+
+		MdivideVenceras2.calcularDivideYVenceras2(A, B);
+		long endTimeDivideYVenceras2 = System.nanoTime() - startTimeDivideYVenceras2;
+		System.out.println(
+				"11.Tiempo de Ejecucion Multiplicacion Divide y venceras 2: " + endTimeDivideYVenceras2 + " ns");
+
+	}
+
+	public static void recorrerArraylist(ArrayList<Integer> multiplicador1, ArrayList<Integer> multiplicador2) {
+		// creacion y recorrido de los arraylist para el americano y el
+		// ingles
+		Random random = new Random();
+
+		for (int j = 0; j < multiplicador1.size(); j++) {
+			multiplicador1.add(random.nextInt(100000));
+		}
+		for (int k = 0; k < multiplicador2.size(); k++) {
+			multiplicador2.add(random.nextInt(80000));
+		}
+
+	}
+
+	public static void recorrerMatriz(int[][] matriz, int[][] matriz2) {
 		// Creacion de las matrices para las pruebas del divide y venceras 2
 		Random ran = new Random(10000);
 		Random r1 = new Random(1000);
@@ -37,135 +161,32 @@ public class Aplicacion {
 				B[r][u] = r1.nextInt(80000);
 			}
 
-			// Creacion del arreglo para las pruebas de algunos metodos de
-			// multiplicacion
-			int[] array = new int[10000];
-			int[] array2 = new int[80000];
-		
-			int[] resultado = new int[array.length + array2.length];
+		}
+	}
 
-			// Creaccion de los arraylist para las pruebas de americana e ingles
-			// iterativos
-			ArrayList<Integer> multiplicador1 = new ArrayList<>();
-			ArrayList<Integer> multiplicador2 = new ArrayList<>();
+	public static void recorrerArreglo(int[] array, int[] array2, int i) {
 
-			// Creacion de valores para la ejecucion de algunas pruebas
-			int operando1 = 100000;
-			int operando2 = 80000;
-			int i = 0;
-			int elemento = 0;
-			int mayor = 0;
+		int elemento = 0;
+		int mayor = 0;
 
-			// Recorrido de los arreglos a considerar
-			for (i = 0; i < array.length; i++) {
+		// Recorrido de los arreglos a considerar
+		for (i = 0; i < array.length; i++) {
 
-				for (int j = 0; j < array2.length; j++) {
+			for (int j = 0; j < array2.length; j++) {
 
-					// Creamos un random para generar numeros aleatorios con
-					// cifras por posicion del arreglo
-					elemento = (int) ((Math.random() * 9999) + 1000);
-					array[i] = elemento;
-					array2[i] = elemento;
-					if (mayor < array[i] && mayor < array2[i]) {
-						mayor = array[i];
-						mayor = array2[i];
-					}
+				// Creamos un random para generar numeros aleatorios con
+				// cifras por posicion del arreglo
+				elemento = (int) ((Math.random() * 99) + 10);
+				array[i] = elemento;
+				array2[i] = elemento;
+				if (mayor < array[i] && mayor < array2[i]) {
+					mayor = array[i];
+					mayor = array2[i];
 				}
-
-				// creacion y recorrido de los arraylist para el americano y el
-				// ingles
-				Random random = new Random();
-
-				for (int j = 0; j < multiplicador1.size(); j++) {
-					multiplicador1.add(random.nextInt(100000));
-				}
-				for (int k = 0; k < multiplicador2.size(); k++) {
-					multiplicador2.add(random.nextInt(80000));
-				}
-
-			} // Cierre del for
-
-			/* (1) MultiplicaciÛn Inglesa ñ ArrayList */
-			long startTimeInglesaArraylist = System.nanoTime();
-
-			MinglesaArraylist.calcularMultiplicacionInglesa(multiplicador1, multiplicador2);
-			long endTimeInglesaArrayList = System.nanoTime() - startTimeInglesaArraylist;
-			System.out.println(
-					"1. Tiempo de Ejecucion Multiplicacion Inglesa Arraylist: " + endTimeInglesaArrayList + " ns");
-
-			/* (2) MultiplicaciÛn a la americana ñ ArrayList */
-			long startTimeAmericanaArraylist = System.nanoTime();
-
-			MamericanaArraylist.calcularAmericano(array, array2);
-			long endTimeAmericanaArraylist = System.nanoTime() - startTimeAmericanaArraylist;
-			System.out.println(
-					"2. Tiempo de Ejecucion Multiplicacion Americana ArrayList: " + endTimeAmericanaArraylist + " ns");
-
-			/* (3) MultiplicaciÛn inglesa recursiva ñ Arreglos */
-			long startTimeInglesaRecursiva = System.nanoTime();
-
-			MinglesaRecursiva.MultiplicacionInglesa(i, array, array2);
-			long endTimeInglesaRecursiva = System.nanoTime() - startTimeInglesaRecursiva;
-			System.out.println(
-					"3. Tiempo de Ejecucion Multiplicacion Inglesa Recursiva: " + endTimeInglesaRecursiva + " ns");
-
-			/* (4) MultiplicaciÛn a la americana recursivo ñ Arreglos */
-			long startTimeAmericanaRecursivo = System.nanoTime();
-
-			 MamericanaRecursivo.calcularAmericano(array, array2, resultado, 0, 0);
-			long endTimeAmericanaRecursivo = System.nanoTime() - startTimeAmericanaRecursivo;
-		    System.out.println("4. Tiempo de Ejecucion Multiplicacion Americana recurisvo: " + endTimeAmericanaRecursivo + " ns");
-
-			/* (5) MultiplicaciÛn a la rusa iterativa ñ Arreglos */
-			long startTimeRusaIterativa = System.nanoTime();
-
-			MrusaIterativa.multiplicarRusaIterativa(array, array2);
-			long endTimeRusaIterativa = System.nanoTime() - startTimeRusaIterativa;
-			System.out.println("5. Tiempo de Ejecucion Multiplicacion Rusa Iterativa: " + endTimeRusaIterativa + " ns");
-
-			/* (6) MultiplicaciÛn a la rusa recursivañ Arreglos */
-			long startTimeRusaIRecursiva = System.nanoTime();
-
-			SeisMultiplicacionRusaRecursiva.multiplicarRusaRecursivo(operando1, operando2);
-			long endTimeRusaRecursiva = System.nanoTime() - startTimeRusaIRecursiva;
-			System.out.println("6. Tiempo de Ejecucion Multiplicacion Rusa Recursiva: " + endTimeRusaRecursiva + " ns");
-
-			/* (7) MultiplicaciÛn hindu */
-			long startTimeHindu = System.nanoTime();
-
-			MHindu.calcularHindu(operando1, operando2);
-			long endTimeHindu = System.nanoTime() - startTimeHindu;
-			System.out.println("7. Tiempo de Ejecucion Multiplicacion Hindu: " + endTimeHindu + " ns");
-
-			/* (8) MultiplicaciÛn Egipcia */
-			long startTimeEgipcio = System.nanoTime();
-
-			MEgipcia.calcularMultiplicacionEgipcia(operando1, operando2);
-			long endTimeEgipcio = System.nanoTime() - startTimeEgipcio;
-			System.out.println("8. Tiempo de Ejecucion Multiplicacion Egipcia: " + endTimeEgipcio + " ns");
-
-			/* (9) MultiplicaciÛn de base 100 */
-			long startTimeBase100 = System.nanoTime();
-
-			Mbase100.calcularMetodoBase100(operando1, operando2);
-			long endTimeBase100 = System.nanoTime() - startTimeBase100;
-			System.out.println("9. Tiempo de Ejecucion Multiplicacion  Base 100: " + endTimeBase100 + " ns");
-
-			/* (10) MultiplicaciÛn divide y venceras 1 */
-			long startTimeDivideYVenceras1 = System.nanoTime();
-
-			MdivideVenceras1.multiplicarArregloDyV(0, array.length - 1, array2);
-			long endTimeDivideYVenceras1 = System.nanoTime() - startTimeDivideYVenceras1;
-			System.out.println( "10.Tiempo de Ejecucion Multiplicacion Divide y venceras 1 " + endTimeDivideYVenceras1 + " ns");
-
-			/* (11) MultiplicaciÛn divide y venceras 2 */
-			long startTimeDivideYVenceras2 = System.nanoTime();
-
-			MdivideVenceras2.calcularDivideYVenceras2(A, B);
-			long endTimeDivideYVenceras2 = System.nanoTime() - startTimeDivideYVenceras2;
-			System.out.println( "11.Tiempo de Ejecucion Multiplicacion Divide y venceras 2: " + endTimeDivideYVenceras2 + " ns");
+			}
 
 		}
 
 	}
+}
 }
