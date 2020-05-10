@@ -168,26 +168,15 @@ public class Aplicacion {
 
 		int elemento = 0;
 		int mayor = 0;
-	
-		for (i = 0; i < array.length; i++) {
-                               // Creamos un random para generar numeros aleatorios con
-				// cifras por posicion del arreglo
-				elemento = (int) ((Math.random() * 99) + 10);
-				array[i] = elemento;
-		}
-			for (int j = 0; j < array2.length; j++) {
 
 				// Creamos un random para generar numeros aleatorios con
 				// cifras por posicion del arreglo
 				elemento = (int) ((Math.random() * 99) + 10);
+				array[i] = elemento;
 				array2[i] = elemento;
 				if (mayor < array[i] && mayor < array2[i]) {
 					mayor = array[i];
 					mayor = array2[i];
 				}
-			
-
-		}
-
 	}
 }
